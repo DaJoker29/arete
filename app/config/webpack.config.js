@@ -5,7 +5,7 @@ module.exports = {
   entry: './app/index.js',
   output: {
     path: path.resolve(__dirname, '..', 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   mode: process.env.NODE_ENV || 'development',
   module: {
@@ -13,15 +13,13 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      }
-    ]
+        use: ['babel-loader', 'eslint-loader'],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './app/template.html'
-    })
-  ]
-}
+      template: './app/template.html',
+    }),
+  ],
+};
