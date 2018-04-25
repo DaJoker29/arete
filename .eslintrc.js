@@ -10,6 +10,7 @@ module.exports = {
     'plugin:import/warnings',
     'prettier/react',
     'last',
+    'plugin:vue/recommended',
   ],
   rules: {
     'no-console': 0,
@@ -21,5 +22,6 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'import/no-dynamic-require': 0
   },
-  plugins: ['json', 'import', 'prettier', 'import-order-autofix'],
+  parser: 'vue-eslint-parser',
+  plugins: ['vue', 'json', 'import', 'prettier', 'import-order-autofix'],
 };

@@ -1,6 +1,7 @@
-module.exports = ding();
+import Vue from 'vue';
+import App from './App.vue';
 
-function ding() {
-  const arr = [1, 2, 3, 4];
-  console.log(...arr);
-}
+new Vue({
+  el: '#app',
+  render: h => h(App),
+});

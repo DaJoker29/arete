@@ -1,3 +1,4 @@
 {
-  "presets": ['env']
+  "presets": ['env', 'stage-2', 'vue'],
+  "plugins": ["transform-vue-jsx"]
 }
