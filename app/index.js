@@ -1,5 +1,8 @@
+import resolve from 'path';
+
 module.exports = ding();
 
 function ding() {
-  console.log('Something');
+  const arr = [1, 2, 3];
+  console.log(...arr);
 }
