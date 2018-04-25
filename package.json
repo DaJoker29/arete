@@ -7,19 +7,30 @@
   "author": "Dewitt Buckingham <dj729@comcast.net>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn run serve",
+    "start": "npm run serve",
     "build": "webpack --config app/config/webpack.config.js",
     "serve": "webpack-serve --config app/config/webpack.config.js",
-    "lint": "yarn eslint .",
-    "fix": "yarn eslint --fix .",
+    "lint": "eslint --ext .json --ext .js .",
+    "fix": "eslint --fix --ext .json --ext .js .",
     "preversion": "git checkout master && git merge --no-ff develop -m 'Pull changes for release bump'",
-    "postversion": "git push && git push --tags && git checkout develop && git merge --no-ff master -m 'Sync Develop branch' && git push"
+    "postversion": "git push && git push --tags && git checkout develop && git merge --no-ff master -m 'Sync Develop branch' && git push",
+    "preinstall": "node tools/pre-install",
+    "postinstall": "node tools/post-install",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "8.2.3",
     "babel-loader": "7.1.4",
     "babel-preset-env": "1.6.1",
+    "callsite": "1.0.0",
+    "debug": "3.1.0",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-last": "0.0.5",
@@ -31,7 +42,10 @@
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "7.7.0",
+    "fs-extra": "5.0.0",
     "html-webpack-plugin": "3.2.0",
+    "husky": "0.14.3",
+    "lint-staged": "7.0.4",
     "webpack": "4.6.0",
     "webpack-serve": "0.3.1"
   },
