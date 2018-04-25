@@ -5,5 +5,17 @@
   "main": "app/index.js",
   "repository": "git@github.com:DaJoker29/arete.git",
   "author": "Dewitt Buckingham <dj729@comcast.net>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config app/config/webpack.config.js",
+    "serve": "webpack-serve --config app/config/webpack.config.js"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "3.2.0",
+    "webpack": "4.6.0",
+    "webpack-serve": "0.3.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "2.0.15"
+  }
 }
