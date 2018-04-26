@@ -7,31 +7,48 @@
         type="text" 
         placeholder="Add new task"
         name="todo">
-      <span>{{ todo }}</span>
     </form>
     <div class="listContainer">
       <div class="activeTodos">
         <h3>Doing</h3>
         <ul>
-          <li>Take out the Trash <a href=""><i class="fa fa-check-circle"/></a>&nbsp;<a href=""><i class="fa fa-minus-circle"/></a></li>
-          <li>Take out the Trash <a href=""><i class="fa fa-check-circle"/></a>&nbsp;<a href=""><i class="fa fa-minus-circle"/></a></li>
-          <li>Take out the Trash <a href=""><i class="fa fa-check-circle"/></a>&nbsp;<a href=""><i class="fa fa-minus-circle"/></a></li>
+          <li 
+            v-for="(data, index) in todos.doing" 
+            :key="index">
+            {{ data.todo }}
+            <i 
+              class="fa fa-check-circle" 
+              @click="shift('doing', 'done', index)"/>
+            <i 
+              class="fa fa-arrow-circle-down" 
+              @click="shift('doing', 'todo', index)"/>
+          </li>
         </ul>
       </div>
       <div class="inactiveTodos">
         <h3>To Do</h3>
         <ul>
-          <li>Take out the Trash <a href=""><i class="fa fa-minus-circle"/></a></li>
-          <li>Take out the Trash <a href=""><i class="fa fa-minus-circle"/></a></li>
-          <li>Take out the Trash <a href=""><i class="fa fa-minus-circle"/></a></li>
+          <li 
+            v-for="(data, index) in todos.todo" 
+            :key="index">
+            {{ data.todo }}
+            <i 
+              class="fa fa-times-circle" 
+              @click="remove('todo', index)"/>
+            <i 
+              class="fa fa-arrow-circle-up" 
+              @click="shift('todo', 'doing', index)"/>
+          </li>
         </ul>
       </div>
       <div class="completedTodos">
         <h3>Done</h3>
         <ul>
-          <li>Take out the Trash <a href=""><i class="fa fa-plus-circle"/></a></li>
-          <li>Take out the Trash <a href=""><i class="fa fa-plus-circle"/></a></li>
-          <li>Take out the Trash <a href=""><i class="fa fa-plus-circle"/></a></li>
+          <li 
+            v-for="(data, index) in todos.done" 
+            :key="index">
+            {{ data.todo }}
+          </li>
         </ul>
       </div>
     </div>
@@ -44,7 +61,25 @@ export default {
   data() {
     return {
       todo: '',
+      todos: {
+        doing: [{ todo: 'Buy milk' }],
+        todo: [{ todo: 'Add to doing list' }, { todo: 'Learn Vue.js' }],
+        done: [{ todo: 'Already done this' }],
+      },
     };
+  },
+  methods: {
+    addTodo() {
+      this.todos.todo.push({ todo: this.todo });
+      this.todo = '';
+    },
+    remove(prop, id) {
+      this.todos[prop].splice(id, 1);
+    },
+    shift(from, to, id) {
+      const task = this.todos[from].splice(id, 1);
+      this.todos[to].push(task[0]);
+    },
   },
 };
 </script>
@@ -87,5 +122,10 @@ ul li {
   border-left: 5px solid blue;
   margin-bottom: 0.25rem;
   color: navy;
+}
+
+i {
+  float: right;
+  padding-left: 0.25rem;
 }
 </style>
