@@ -68,17 +68,34 @@ export default {
       },
     };
   },
+  created: function() {
+    this.getState();
+  },
   methods: {
     addTodo() {
       this.todos.todo.push({ todo: this.todo });
       this.todo = '';
+      this.saveState();
     },
     remove(prop, id) {
       this.todos[prop].splice(id, 1);
+      this.saveState();
     },
     shift(from, to, id) {
       const task = this.todos[from].splice(id, 1);
       this.todos[to].push(task[0]);
+      this.saveState();
+    },
+    saveState() {
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    },
+    getState() {
+      if (localStorage.getItem('todos')) {
+        this.todos = JSON.parse(localStorage.getItem('todos'));
+      }
+    },
+    clearState() {
+      localStorage.removeItem('todos');
     },
   },
 };
