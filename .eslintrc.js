@@ -13,14 +13,17 @@ module.exports = {
     'plugin:vue/recommended',
   ],
   rules: {
-    'no-console': 0,
-    'no-underscore-dangle': 0,
-    'consistent-return': 1,
-    'global-require': 0,
-    'import-order-autofix/order': 1,
-    'prefer-destructuring': 1,
-    'import/no-extraneous-dependencies': 0,
-    'import/no-dynamic-require': 0
+    'no-console': 'off',
+    'no-underscore-dangle': 'off',
+    'consistent-return': 'warn',
+    'global-require': 'off',
+    'import-order-autofix/order': 'warn',
+    'prefer-destructuring': 'warn',
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-dynamic-require': 'off',
+    'prettier/prettier': ['error', null, {
+      'trailing-commas': 'es5'
+    }]
   },
   parser: 'vue-eslint-parser',
   plugins: ['vue', 'json', 'import', 'prettier', 'import-order-autofix'],

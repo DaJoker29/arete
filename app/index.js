@@ -1,13 +1,8 @@
-import Vue from 'vue';
-import App from './App.vue';
-
-String.prototype.titleCase =
-  String.prototype.titleCase ||
-  function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-  };
+import Vue from "vue";
+import App from "./App.vue";
+import "./util";
 
 new Vue({
-  el: '#app',
-  render: h => h(App),
+  el: "#app",
+  render: h => h(App)
 });
