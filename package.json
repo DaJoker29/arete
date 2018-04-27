@@ -9,7 +9,7 @@
   "scripts": {
     "start": "npm run serve",
     "build": "webpack --config app/config/webpack.config.js",
-    "serve": "webpack-serve --config app/config/webpack.config.js",
+    "serve": "webpack-dev-server --config app/config/webpack.config.js",
     "lint": "eslint --ext .js --ext .vue .",
     "fix": "eslint --fix --ext .js --ext .vue .",
     "preversion": "git checkout master && git merge --no-ff develop -m 'Pull changes for release bump'",
@@ -59,6 +59,7 @@
     "vue-loader": "15.0.0",
     "vue-template-compiler": "2.5.16",
     "webpack": "4.6.0",
+    "webpack-dev-server": "3.1.3",
     "webpack-serve": "0.3.1"
   },
   "devDependencies": {
