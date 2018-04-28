@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 const { resolve } = require('path');
 const fs = require('fs-extra');
-const pkg = require('../package.json');
 
 console.log('\nStart of PREINSTALL\n');
 
 const symlinks = [
-  resolve(__dirname, `../node_modules/@${pkg.name}`),
+  resolve(__dirname, '../node_modules/@app'),
   resolve(__dirname, '../node_modules/@tools'),
 ];
 

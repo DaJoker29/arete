@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const { resolve } = require('path');
-const pkg = require('../package.json');
 
 console.log('\nStart of POSTINSTALL\n');
 
 const symlinks = [
   [
     resolve(__dirname, '../app/'),
-    resolve(__dirname, `../node_modules/@${pkg.name}`),
+    resolve(__dirname, '../node_modules/@app'),
   ],
   [resolve(__dirname), resolve(__dirname, '../node_modules/@tools')],
   [
